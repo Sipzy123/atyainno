@@ -52,7 +52,7 @@ const FloatingDock = ({ currentPage, onNavigate }) => {
     const dist = Math.abs(mouseX - itemCenter);
     const maxDist = 90;
     if (dist > maxDist) return 1;
-    return 1 + (1 - dist / maxDist) * 0.6;
+    return 1 + (1 - dist / maxDist) * 0.4;
   };
 
   return (

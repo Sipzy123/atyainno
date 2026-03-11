@@ -90,25 +90,43 @@ const Contact = ({ onNavigate }) => {
 
             <div className="contact-methods">
               {contactMethods.map((m, i) => (
-                m.href ? (
-                  <a key={i} href={m.href} className="cm-item">
-                    <span className="cm-icon">{m.icon}</span>
-                    <div>
-                      <strong>{m.label}</strong>
-                      <span>{m.value}</span>
-                      <small>{m.sub}</small>
-                    </div>
-                  </a>
-                ) : (
-                  <div key={i} className="cm-item">
-                    <span className="cm-icon">{m.icon}</span>
-                    <div>
-                      <strong>{m.label}</strong>
-                      <span>{m.value}</span>
-                      <small>{m.sub}</small>
-                    </div>
-                  </div>
-                )
+                <div key={i} className={`cm-item ${m.label === 'Office' ? 'cm-item--address' : ''}`}>
+                  {m.href ? (
+                    <a href={m.href} className="cm-link">
+                      <span className="cm-icon">{m.icon}</span>
+                      <div>
+                        <strong>{m.label}</strong>
+                        <span>{m.value}</span>
+                        <small>{m.sub}</small>
+                      </div>
+                    </a>
+                  ) : (
+                    <>
+                      <div className="cm-content">
+                        <span className="cm-icon">{m.icon}</span>
+                        <div>
+                          <strong>{m.label}</strong>
+                          <span>{m.value}</span>
+                          <small>{m.sub}</small>
+                        </div>
+                      </div>
+                      {m.label === 'Office' && (
+                        <div className="cm-map-mini">
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3737.91574!2d72.946399!3d20.571448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0c2834b679b3d%3A0xc3c544f8007a8274!2sSai+Leela+Mall!5e0!3m2!1sen!2sin!4v1740000000000!5m2!1sen!2sin"
+                            width="100%"
+                            height="160"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="AtyaInno Office Location"
+                          ></iframe>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
               ))}
             </div>
 
@@ -239,6 +257,7 @@ const Contact = ({ onNavigate }) => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };

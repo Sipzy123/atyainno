@@ -33,7 +33,7 @@
 
 .dock-tooltip {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 18px);
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
@@ -41,11 +41,12 @@
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-md);
   padding: 5px 10px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-primary);
   pointer-events: none;
   animation: tooltipPop 0.15s ease forwards;
+  z-index: 50;
 }
 
 .dock-tooltip::after {

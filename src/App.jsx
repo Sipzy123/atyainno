@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import FloatingDock from './components/FloatingDock';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import OdooPage from './pages/OdooPage';
@@ -42,6 +43,7 @@ const App = () => {
       <main>{pages[currentPage]}</main>
       <Footer onNavigate={handleNavigate} />
       <FloatingDock currentPage={currentPage} onNavigate={handleNavigate} />
+      <ScrollToTop />
     </div>
   );
 };

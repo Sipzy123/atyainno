@@ -414,7 +414,18 @@
 }
 
 .omc-icon {
-  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
+}
+
+.odoo-mod-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .odoo-mod-card strong {
@@ -619,72 +630,168 @@
   line-height: 1.7;
 }
 
-/* ── CTA ──────────────────────────────── */
-.odoo-cta-section {
+/* ── DUAL CTA ────────────────────────────── */
+.odoo-dual-cta-section {
   padding: var(--space-4xl) 0;
   background: var(--dark-800);
   border-top: 1px solid rgba(113, 75, 103, 0.15);
 }
 
-.odoo-cta-inner {
-  background: #111111;
-  border: 1px solid rgba(113, 75, 103, 0.3);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-4xl);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-lg);
+.odoo-dual-cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
 }
 
-.odoo-cta-glow {
+.odoo-cta-card {
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+.odoo-cta-card h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.odoo-cta-card .section-label {
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-card .btn {
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-new {
+  background: #111111;
+  border: 1px solid rgba(113, 75, 103, 0.3);
+}
+
+.odoo-cta-new h3 span {
+  color: var(--gold);
+}
+
+.odoo-cta-new .odoo-cta-glow {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 300px;
-  background: radial-gradient(ellipse, var(--odoo-purple-glow) 0%, rgba(232, 182, 0, 0.06) 50%, transparent 70%);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(232, 182, 0, 0.15) 0%, transparent 60%);
   pointer-events: none;
 }
 
-.odoo-cta-logo {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.75;
-  position: relative;
-  z-index: 1;
+.odoo-cta-amc {
+  background: linear-gradient(135deg, rgba(113, 75, 103, 0.1) 0%, rgba(20, 20, 20, 1) 100%);
+  border: 1px solid rgba(113, 75, 103, 0.4);
 }
 
-.odoo-cta-inner .section-label {
-  justify-content: center;
-  position: relative;
-  z-index: 1;
+.odoo-cta-amc h3 span {
+  color: #b87aaa;
 }
 
-.odoo-cta-inner .section-title {
-  position: relative;
-  z-index: 1;
+.odoo-cta-amc .odoo-cta-glow {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at bottom left, rgba(113, 75, 103, 0.25) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.odoo-cta-inner .section-desc {
-  text-align: center;
-  position: relative;
-  z-index: 1;
+/* ── Industries ──────────────────────── */
+.odoo-industries-section {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-900);
 }
 
-.odoo-cta-btns {
-  display: flex;
+.odoo-ind-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
 }
+
+.odoo-ind-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.odoo-ind-card:hover {
+  border-color: rgba(113, 75, 103, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(113, 75, 103, 0.12);
+  background: rgba(113, 75, 103, 0.05);
+}
+
+.oic-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.odoo-ind-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.odoo-ind-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.oic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.oic-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.odoo-ind-card:hover .oic-tag {
+  background: rgba(113, 75, 103, 0.15);
+  border-color: rgba(113, 75, 103, 0.3);
+  color: #c49ab8;
+}
+
+
 
 /* ── Responsive ───────────────────────── */
 @media (max-width: 1024px) {
@@ -703,12 +810,17 @@
   .odoo-mod-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .odoo-ind-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
 
   .odoo-svc-grid,
-  .why-odoo-grid {
+  .why-odoo-grid,
+  .odoo-ind-grid {
     grid-template-columns: 1fr;
   }
 
@@ -716,8 +828,8 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .odoo-cta-inner {
-    padding: var(--space-2xl);
+  .odoo-dual-cta-grid {
+    grid-template-columns: 1fr;
   }
 
   .odoo-stats {

@@ -111,8 +111,13 @@
   text-decoration: none;
 }
 
-a.cm-item:hover {
-  border-color: var(--border);
+a.cm-item:hover,
+.cm-link:hover {
+  border-color: var(--gold);
+  background: var(--dark-500);
+}
+
+a.cm-link:hover {
   transform: translateX(4px);
 }
 
@@ -133,26 +138,60 @@ a.cm-item:hover {
   height: 18px;
 }
 
-.cm-item>div {
+.cm-item > div,
+.cm-link > div,
+.cm-content > div {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .cm-item strong {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--gold);
 }
 
 .cm-item span {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.4;
 }
 
 .cm-item small {
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.cm-item--address {
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cm-content,
+.cm-link {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  text-decoration: none;
+  width: 100%;
+}
+
+.cm-map-mini {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  line-height: 0;
+}
+
+.cm-map-mini iframe {
+  filter: grayscale(1) invert(0.9) contrast(1.2);
+  transition: filter 0.3s ease;
+}
+
+.cm-item:hover .cm-map-mini iframe {
+  filter: grayscale(0.5) invert(0) contrast(1);
 }
 
 .hours-card {
@@ -199,6 +238,19 @@ a.cm-item:hover {
 
 .hour-row span:last-child {
   color: var(--text-muted);
+}
+
+.contact-info-map {
+  margin-top: var(--space-md);
+}
+
+.contact-info-map .map-wrapper {
+  height: 280px;
+  border-radius: var(--radius-lg);
+}
+
+.contact-info-map iframe {
+  height: 100%;
 }
 
 /* Form Card */
