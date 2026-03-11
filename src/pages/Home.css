@@ -76,7 +76,7 @@
   background: rgba(245, 197, 24, 0.08);
   border: 1px solid rgba(245, 197, 24, 0.2);
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: 1.0rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   padding: 0.4rem 1rem;
@@ -94,7 +94,7 @@
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-size: clamp(1.8rem, 5.5vw, 4.5rem);
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.05;
@@ -132,7 +132,7 @@
 .hero-stat strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 2.0rem;
   font-weight: 800;
   color: var(--gold);
   line-height: 1;
@@ -140,7 +140,7 @@
 }
 
 .hero-stat span {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -228,7 +228,7 @@
 
 .hcs-label {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-muted);
   letter-spacing: 0.05em;
@@ -255,7 +255,7 @@
 }
 
 .hcs-metric-label {
-  font-size: 0.78rem;
+  font-size: 1.0rem;
   color: var(--text-muted);
 }
 
@@ -402,7 +402,7 @@
   align-items: center;
   gap: 10px;
   padding: 0 2.5rem;
-  font-size: 0.82rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.04em;
