@@ -1,0 +1,125 @@
+.testimonial-card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.testimonial-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.testimonial-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.testimonial-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.testimonial-glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.testimonial-card:hover .testimonial-glow {
+  opacity: 1;
+}
+
+.testimonial-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 15px 40px rgba(0, 102, 204, 0.1);
+  transform: translateY(-4px);
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: var(--spacing-md);
+  color: #fbbf24;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+  font-style: italic;
+  position: relative;
+  z-index: 10;
+}
+
+.testimonial-text::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--primary);
+  opacity: 0.2;
+  position: absolute;
+  top: -20px;
+  left: -15px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.author-company {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: var(--spacing-lg);
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+  }
+}

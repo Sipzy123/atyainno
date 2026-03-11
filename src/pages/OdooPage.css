@@ -1,0 +1,745 @@
+/* ══════════════════════════════════════════
+   ODOO PAGE — Odoo purple #714b67 + gold #E8B600
+══════════════════════════════════════════ */
+
+/* Odoo brand tokens */
+:root {
+  --odoo-purple: #714b67;
+  --odoo-purple-light: rgba(113, 75, 103, 0.18);
+  --odoo-purple-glow: rgba(113, 75, 103, 0.35);
+  --odoo-grey: #8f8f8f;
+  --odoo-pink: #e46f78;
+  --odoo-gradient: linear-gradient(135deg, #714b67 0%, #9b6b8f 100%);
+  --odoo-blend: linear-gradient(135deg, #714b67 0%, #E8B600 100%);
+}
+
+.odoo-page {
+  width: 100%;
+}
+
+/* ── Hero ─────────────────────────────── */
+.odoo-hero {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  padding-top: 90px;
+  padding-bottom: var(--space-4xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.odoo-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.odoo-orb-purple {
+  position: absolute;
+  left: -120px;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, var(--odoo-purple-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.odoo-orb-gold {
+  position: absolute;
+  right: -60px;
+  top: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(232, 182, 0, 0.09) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(70px);
+  animation: glowPulse 8s ease-in-out infinite 1s;
+}
+
+.odoo-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(113, 75, 103, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(113, 75, 103, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 90% 90% at 60% 50%, black 20%, transparent 100%);
+}
+
+.odoo-hero-inner {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+.odoo-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Logo lockup */
+.odoo-logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.odoo-hero-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  /* inverted logo is white — keep it */
+  filter: brightness(1);
+}
+
+.odoo-cert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  background: var(--odoo-purple-light);
+  border: 1px solid var(--odoo-purple);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c49ab8;
+  letter-spacing: 0.04em;
+}
+
+.ocp-pulse {
+  width: 7px;
+  height: 7px;
+  background: var(--odoo-purple);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulseGold 2s ease-in-out infinite;
+}
+
+/* Page title */
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.page-hero-title span {
+  background: var(--odoo-blend);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 500px;
+}
+
+.odoo-hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Odoo-themed outline button */
+.btn-odoo {
+  background: var(--odoo-purple-light);
+  color: #c49ab8;
+  border: 1.5px solid var(--odoo-purple);
+}
+
+.btn-odoo:hover {
+  background: rgba(113, 75, 103, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(113, 75, 103, 0.3);
+}
+
+.btn-odoo-outline {
+  background: transparent;
+  color: #c49ab8;
+  border: 1.5px solid rgba(113, 75, 103, 0.5);
+}
+
+.btn-odoo-outline:hover {
+  background: var(--odoo-purple-light);
+  border-color: var(--odoo-purple);
+  transform: translateY(-2px);
+}
+
+/* ── Hero Right — Partner card ────────── */
+.odoo-hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.odoo-partner-card {
+  position: relative;
+  background: #141414;
+  border: 1px solid rgba(113, 75, 103, 0.35);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+}
+
+.opc-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, var(--odoo-purple-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.opc-badge-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.opc-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(113, 75, 103, 0.4), transparent);
+}
+
+.opc-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.opc-meta span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.opc-meta strong {
+  font-size: 0.82rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Stats row */
+.odoo-stats {
+  display: flex;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 380px;
+}
+
+.odoo-stat-card {
+  flex: 1;
+  background: #141414;
+  border: 1px solid rgba(113, 75, 103, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.25s ease;
+}
+
+.odoo-stat-card:hover {
+  border-color: var(--odoo-purple);
+}
+
+.odoo-stat-card strong {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  /* Gold for numbers — company brand */
+  color: var(--gold);
+}
+
+.odoo-stat-card span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ── Services Section ─────────────────── */
+.odoo-services-section {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-800);
+  border-top: 1px solid rgba(113, 75, 103, 0.15);
+}
+
+.odoo-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.odoo-svc-card {
+  background: var(--dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.odoo-svc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--odoo-purple-light) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.odoo-svc-card:hover {
+  border-color: rgba(113, 75, 103, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(113, 75, 103, 0.15), var(--shadow-gold-sm);
+}
+
+.odoo-svc-card:hover::before {
+  opacity: 1;
+}
+
+.odoo-svc-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.odoo-svc-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.odoo-svc-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.odoo-svc-card ul {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.odoo-svc-card li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Alternating check colors — purple + gold */
+.odoo-svc-card li:nth-child(odd) .odoo-check {
+  color: var(--gold);
+}
+
+.odoo-svc-card li:nth-child(even) .odoo-check {
+  color: #b87aaa;
+}
+
+.odoo-check {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ── Modules ──────────────────────────── */
+.odoo-modules-section {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-900);
+}
+
+.odoo-mod-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-md);
+}
+
+.odoo-mod-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-base);
+  animation: fadeUp 0.5s ease backwards;
+}
+
+.odoo-mod-card:hover {
+  border-color: rgba(113, 75, 103, 0.45);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(113, 75, 103, 0.12);
+  background: rgba(113, 75, 103, 0.08);
+}
+
+.omc-icon {
+  font-size: 1.75rem;
+}
+
+.odoo-mod-card strong {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.odoo-mod-card small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ── Why Odoo ─────────────────────────── */
+.why-odoo {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-800);
+  border-top: 1px solid rgba(113, 75, 103, 0.15);
+}
+
+.why-odoo-logo-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.why-odoo-inline-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  /* Normal logo has purple/grey — looks great on dark bg */
+  filter: brightness(1.1) contrast(1.1);
+  opacity: 0.85;
+}
+
+.why-odoo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.why-odoo-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-odoo-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--odoo-blend);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+  transform-origin: left;
+}
+
+.why-odoo-card:hover {
+  border-color: rgba(113, 75, 103, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(113, 75, 103, 0.12);
+}
+
+.why-odoo-card:hover::after {
+  transform: scaleX(1);
+}
+
+.woc-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.why-odoo-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.why-odoo-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── Timeline ─────────────────────────── */
+.odoo-timeline {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-900);
+}
+
+.timeline-track {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--odoo-purple) 0%, var(--gold) 60%, rgba(232, 182, 0, 0.1) 100%);
+}
+
+.tl-item {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  padding-bottom: var(--space-xl);
+  position: relative;
+}
+
+.tl-marker {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--dark-700);
+  border: 2px solid var(--odoo-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+  position: relative;
+  transition: border-color 0.25s ease;
+}
+
+.tl-item:last-child .tl-marker {
+  border-color: var(--gold);
+}
+
+.tl-num {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.tl-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  flex: 1;
+  transition: all var(--transition-base);
+}
+
+.tl-card:hover {
+  border-color: rgba(113, 75, 103, 0.4);
+  transform: translateX(6px);
+  box-shadow: 0 8px 24px rgba(113, 75, 103, 0.1);
+}
+
+.tl-phase {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b87aaa;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.tl-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.tl-duration {
+  display: inline-block;
+  background: var(--odoo-purple-light);
+  border: 1px solid rgba(113, 75, 103, 0.4);
+  color: #c49ab8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-md);
+}
+
+.tl-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── CTA ──────────────────────────────── */
+.odoo-cta-section {
+  padding: var(--space-4xl) 0;
+  background: var(--dark-800);
+  border-top: 1px solid rgba(113, 75, 103, 0.15);
+}
+
+.odoo-cta-inner {
+  background: #111111;
+  border: 1px solid rgba(113, 75, 103, 0.3);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-4xl);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.odoo-cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, var(--odoo-purple-glow) 0%, rgba(232, 182, 0, 0.06) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.odoo-cta-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.75;
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-inner .section-label {
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-inner .section-title {
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-inner .section-desc {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.odoo-cta-btns {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Responsive ───────────────────────── */
+@media (max-width: 1024px) {
+  .odoo-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .odoo-hero-right {
+    display: none;
+  }
+
+  .odoo-svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .odoo-mod-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .odoo-svc-grid,
+  .why-odoo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .odoo-mod-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .odoo-cta-inner {
+    padding: var(--space-2xl);
+  }
+
+  .odoo-stats {
+    flex-direction: column;
+  }
+
+  .page-hero-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .odoo-mod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .odoo-hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
