@@ -44,7 +44,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
                 <img src="/odoo_logo.png" alt="Odoo Logo" />
               </span>
               <div className="nav-odoo-badge-text">
-                <strong>Certified</strong>
+                <strong>Authorised</strong>
                 <span>Odoo Partner</span>
               </div>
             </div>

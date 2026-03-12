@@ -98,7 +98,7 @@ const Services = ({ onNavigate }) => {
             <div className="ofb-left">
               <img src="/odoo_logo_inverted.png" alt="Odoo" className="ofb-logo" />
               <div className="ofb-text">
-                <strong>Certified Odoo Partner</strong>
+                <strong>Authorised Odoo Partner</strong>
                 <span>Full ERP implementation, custom modules &amp; ongoing support</span>
               </div>
             </div>
@@ -143,7 +143,7 @@ const Services = ({ onNavigate }) => {
               </div>
               <h3 className="svc-card-title">Odoo ERP Solutions</h3>
               <p className="svc-card-desc">
-                Certified Odoo partner delivering end-to-end ERP implementation, custom modules, and enterprise-grade support.
+                Authorised Odoo partner delivering end-to-end ERP implementation, custom modules, and enterprise-grade support.
               </p>
               <ul className="svc-features">
                 {['ERP Implementation', 'Custom Modules', 'Data Migration', 'Training & Support'].map(f => (
@@ -153,7 +153,7 @@ const Services = ({ onNavigate }) => {
                 ))}
               </ul>
               <div className="svc-odoo-partner-badge">
-                <img src="/odoo_learning_partner_rgb.svg" alt="Certified Odoo Partner" className="sopb-img" />
+                <img src="/odoo_learning_partner_rgb.svg" alt="Authorised Odoo Partner" className="sopb-img" />
               </div>
             </div>
           </div>

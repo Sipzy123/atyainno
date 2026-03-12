@@ -326,7 +326,7 @@ const Home = ({ onNavigate }) => {
               Odoo ERP<br /><span>Implementation</span>
             </h2>
             <p className="section-desc">
-              Transform your operations with Odoo's all-in-one business platform. As a certified Odoo partner, we handle everything from initial setup to custom module development.
+              Transform your operations with Odoo's all-in-one business platform. As a authorised Odoo partner, we handle everything from initial setup to custom module development.
             </p>
             <ul className="odoo-spot-features">
               {[
@@ -379,7 +379,7 @@ const Home = ({ onNavigate }) => {
                   className="odoo-logo"
                 />
               </span>
-              <strong>Certified</strong>
+              <strong>Authorised</strong>
               <span>Odoo Partner</span>
             </div> */}
           </div>
