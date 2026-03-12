@@ -124,6 +124,17 @@
   border-radius: 50%;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .dock-item:hover {
+    background: var(--dark-500);
+    color: var(--text-primary);
+  }
+
+  .dock-item.dock-highlight:hover {
+    box-shadow: 0 6px 28px rgba(232, 182, 0, 0.5);
+  }
+}
+
 @media (max-width: 600px) {
   .floating-dock {
     gap: 4px;

@@ -371,7 +371,7 @@ const Home = ({ onNavigate }) => {
                 </div>
               ))}
             </div>
-            <div className="odoo-badge">
+            {/* <div className="odoo-badge">
               <span className="odoo-badge-icon">
                 <img
                   src="/odoo_logo.png"
@@ -381,7 +381,7 @@ const Home = ({ onNavigate }) => {
               </span>
               <strong>Certified</strong>
               <span>Odoo Partner</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

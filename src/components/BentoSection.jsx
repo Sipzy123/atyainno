@@ -56,67 +56,71 @@ const IntegrationHub = () => {
 
   return (
     <div className="hub-wrap" ref={ref}>
-      {/* SVG for rings + lines only */}
-      <svg className="hub-bg-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx={CX} cy={CY} r={R}       stroke="rgba(232,182,0,0.10)" strokeWidth="1" strokeDasharray="5 7"/>
-        <circle cx={CX} cy={CY} r={R * 0.55} stroke="rgba(232,182,0,0.06)" strokeWidth="1" strokeDasharray="3 9"/>
-        {nodes.map((n, i) => (
-          <line key={`base-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
-            stroke="rgba(232,182,0,0.2)" strokeWidth="1" strokeDasharray="4 5"
-            style={{ opacity: visible ? 1 : 0, transition: `opacity 0.5s ease ${i * 0.07}s` }}
-          />
-        ))}
-        {nodes.map((n, i) => (
-          <line key={`glow-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
-            className="hub-line-glow"
-            style={{ 
-              animationDelay: `${i * 0.7}s`,
-              stroke: n.color
-            }}
-          />
-        ))}
-      </svg>
+      {/* Container enforces a 1:1 Aspect Ratio to keep SVG lines and Nodes perfectly aligned on all screens */}
+      <div className="hub-container-square">
+        {/* SVG for rings + lines only */}
+        <svg className="hub-bg-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx={CX} cy={CY} r={R}       stroke="rgba(232,182,0,0.10)" strokeWidth="1" strokeDasharray="5 7"/>
+          <circle cx={CX} cy={CY} r={R * 0.55} stroke="rgba(232,182,0,0.06)" strokeWidth="1" strokeDasharray="3 9"/>
+          
+          {/* Base dashed lines */}
+          {nodes.map((n, i) => (
+            <line key={`base-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
+              stroke="rgba(232,182,0,0.2)" strokeWidth="1" strokeDasharray="4 5"
+              style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}
+            />
+          ))}
+          
+          {/* Continuous Glowing lines (No delays) */}
+          {nodes.map((n, i) => (
+            <line key={`glow-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
+              className="hub-line-glow"
+              style={{ stroke: n.color }}
+            />
+          ))}
+        </svg>
 
-      {/* Node icons positioned via CSS */}
-      <div className="hub-nodes-layer">
-        {nodes.map((n, i) => {
-          const px = (n.x / 400) * 100;
-          const py = (n.y / 400) * 100;
-          return (
-            <div key={n.name} className="hub-node"
-              style={{
-                left: `${px}%`,
-                top: `${py}%`,
-                color: n.color,
-                opacity: visible ? 1 : 0,
-                transform: `translate(-50%,-50%) scale(${visible ? 1 : 0.4})`,
-                transition: `opacity 0.55s ease ${0.15 + i * 0.07}s, transform 0.55s cubic-bezier(0.34,1.56,0.64,1) ${0.15 + i * 0.07}s`,
-              }}>
-              <div className="hub-node-bg" style={{ borderColor: n.color + '55' }}>
-                {n.svg}
+        {/* Node icons positioned via CSS */}
+        <div className="hub-nodes-layer">
+          {nodes.map((n, i) => {
+            const px = (n.x / 400) * 100;
+            const py = (n.y / 400) * 100;
+            return (
+              <div key={n.name} className="hub-node"
+                style={{
+                  left: `${px}%`,
+                  top: `${py}%`,
+                  color: n.color,
+                  opacity: visible ? 1 : 0,
+                  transform: `translate(-50%,-50%) scale(${visible ? 1 : 0.8})`,
+                  transition: 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
+                }}>
+                <div className="hub-node-bg" style={{ borderColor: n.color + '55' }}>
+                  {n.svg}
+                </div>
+                <span className="hub-node-lbl">{n.name}</span>
               </div>
-              <span className="hub-node-lbl">{n.name}</span>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        {/* Center */}
-        <div className="hub-center"
-          style={{
-            left: `${(CX / 400) * 100}%`,
-            top:  `${(CY / 400) * 100}%`,
-            opacity: visible ? 1 : 0,
-            transform: `translate(-50%,-50%) scale(${visible ? 1 : 0.5})`,
-            transition: 'opacity 0.5s ease 0s, transform 0.5s cubic-bezier(0.34,1.56,0.64,1) 0s',
-          }}>
-          <div className="hub-center-glow" />
-          <svg viewBox="0 0 32 32" fill="none" className="hub-center-grid">
-            <rect x="3"  y="3"  width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.95"/>
-            <rect x="18" y="3"  width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.6"/>
-            <rect x="3"  y="18" width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.6"/>
-            <rect x="18" y="18" width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.25"/>
-          </svg>
-          <span>Atya<br/>Inno</span>
+          {/* Center */}
+          <div className="hub-center"
+            style={{
+              left: `${(CX / 400) * 100}%`,
+              top:  `${(CY / 400) * 100}%`,
+              opacity: visible ? 1 : 0,
+              transform: `translate(-50%,-50%) scale(${visible ? 1 : 0.8})`,
+              transition: 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)',
+            }}>
+            <div className="hub-center-glow" />
+            <svg viewBox="0 0 32 32" fill="none" className="hub-center-grid">
+              <rect x="3"  y="3"  width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.95"/>
+              <rect x="18" y="3"  width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.6"/>
+              <rect x="3"  y="18" width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.6"/>
+              <rect x="18" y="18" width="11" height="11" rx="2.5" fill="#E8B600" opacity="0.25"/>
+            </svg>
+            <span>Atya<br/>Inno</span>
+          </div>
         </div>
       </div>
     </div>
@@ -163,7 +167,7 @@ const DonutChart = () => {
       <p className="donut-sub-text">16,843 projects delivered</p>
 
       <div className="donut-main-body">
-        <svg width="200" height="200" viewBox="0 0 200 200" style={{ overflow: 'visible' }}>
+        <svg width="200" height="200" viewBox="0 0 200 200" style={{ overflow: 'visible', flexShrink: 0 }}>
           <circle cx={cx} cy={cy} r={r} fill="none" stroke="#1C1C1C" strokeWidth={sw + 4}/>
           {segments.map((seg, i) => {
             const arc = animated ? (circ * seg.pct) / 100 : 0;
@@ -176,7 +180,7 @@ const DonutChart = () => {
                 strokeWidth={sw}
                 strokeDasharray={`${arc} ${circ}`}
                 transform={`rotate(${rotate} ${cx} ${cy})`}
-                style={{ transition: `stroke-dasharray 1.3s cubic-bezier(0.4,0,0.2,1) ${i * 0.2}s` }}
+                style={{ transition: `stroke-dasharray 1s cubic-bezier(0.4,0,0.2,1)` }}
               />
             );
           })}
@@ -238,7 +242,7 @@ const StatsCell = () => {
             <div className="bsbar-fill"
               style={{
                 height: visible ? `${h}%` : '2px',
-                transition: `height 1s cubic-bezier(0.4,0,0.2,1) ${i * 0.1}s`,
+                transition: `height 0.8s cubic-bezier(0.4,0,0.2,1)`,
               }}
             />
           </div>
@@ -290,12 +294,12 @@ const MetricsChart = ({ onNavigate }) => {
                 height={animated ? (b / 100) * H : 0}
                 fill={i === 7 ? 'rgba(232,182,0,0.65)' : 'rgba(255,255,255,0.07)'}
                 rx="2"
-                style={{ transition: `y 0.9s ease ${i * 0.06}s, height 0.9s ease ${i * 0.06}s` }}
+                style={{ transition: 'y 0.6s ease, height 0.6s ease' }}
               />
             ))}
             <polyline points={pts} fill="none" stroke="#E8B600" strokeWidth="2.5"
               strokeDasharray="1000" strokeDashoffset={animated ? '0' : '1000'}
-              style={{ transition: 'stroke-dashoffset 1.8s ease 0.35s' }}
+              style={{ transition: 'stroke-dashoffset 1.2s ease' }}
             />
             {line.map((v, i) => (
               <circle key={i}
@@ -304,7 +308,7 @@ const MetricsChart = ({ onNavigate }) => {
                 r={i === 7 ? 4.5 : 3}
                 fill={i === 7 ? '#E8B600' : '#C49A00'}
                 opacity={animated ? 1 : 0}
-                style={{ transition: `opacity 0.4s ease ${0.4 + i * 0.1}s` }}
+                style={{ transition: 'opacity 0.4s ease' }}
               />
             ))}
           </svg>
@@ -356,7 +360,7 @@ const OdooCell = ({ onNavigate }) => (
         { t: 'Seamless Migration', s: 'Zero-downtime transition from legacy systems.' },
         { t: 'Real-time Insights', s: 'Unified dashboards for instant analytics.' },
       ].map((m, i) => (
-        <div key={m.t} style={{ background: '#181818', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', animationDelay: `${i * 0.1}s` }} className="fade-up">
+        <div key={m.t} style={{ background: '#181818', padding: '10px 14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)' }} className="fade-up">
           <strong style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-primary)', marginBottom: '2px' }}>{m.t}</strong>
           <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{m.s}</span>
         </div>

@@ -150,52 +150,132 @@
   display: none;
 }
 
+/* --- Compact Odoo Badge in Navbar (Purple) --- */
+.nav-odoo-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #714B67;
+  /* Odoo Brand Purple */
+  color: #ffffff;
+  /* White text for contrast */
+  padding: 6px 12px;
+  border-radius: var(--radius-md, 8px);
+  margin-right: 8px;
+  /* Breathing room before the phone number */
+}
+
+.nav-odoo-badge-icon {
+  background: #fff;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-odoo-badge-icon img {
+  height: 14px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-odoo-badge-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-odoo-badge-text strong {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  /* Ensure strong text stays white */
+}
+
+.nav-odoo-badge-text span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  /* Slightly faded white for subtitle */
+}
+
+.mobile-nav-extras {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .nav-phone {
     display: none;
   }
+
+  /* Make the main navbar slightly tighter to fit everything */
+  .nav-container {
+    gap: 1rem;
+  }
+
+  /* Shrink the Odoo badge for tablet screens */
+  .nav-odoo-badge {
+    padding: 5px 8px;
+    gap: 6px;
+    margin-right: 4px;
+    /* Less space before the Get a Quote button */
+  }
+
+  .nav-odoo-badge-icon img {
+    height: 12px;
+    /* Slightly smaller logo */
+  }
+
+  .nav-odoo-badge-text strong {
+    font-size: 0.6rem;
+  }
+
+  .nav-odoo-badge-text span {
+    font-size: 0.6rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .nav-menu {
-    display: none;
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--dark-800);
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: var(--space-xl);
-    gap: var(--space-xs);
-    z-index: 999;
-    border-top: 1px solid var(--border);
+
+  /* 1. Completely hide the dropdown menu, hamburger icon, and overlay */
+  .nav-menu,
+  .hamburger,
+  .nav-overlay,
+  .mobile-nav-extras {
+    display: none !important;
   }
 
-  .nav-menu.open {
-    display: flex;
-  }
-
-  .nav-link {
-    width: 100%;
-    font-size: 1.1rem;
-    padding: var(--space-md) var(--space-lg);
-  }
-
+  /* 2. Un-hide the actions container so we can show the badge */
   .nav-actions {
-    display: none;
+    display: flex !important;
+    margin-left: auto;
   }
 
-  .hamburger {
-    display: flex;
+  /* 3. Hide the phone number and "Get a Quote" button on mobile */
+  .nav-phone,
+  .nav-cta {
+    display: none !important;
   }
 
-  .nav-overlay {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 998;
+  /* 4. Perfect mobile sizing for the Odoo badge */
+  .nav-odoo-badge {
+    margin-right: 0;
+    /* Remove right margin since it's the last item now */
+    padding: 5px 8px;
+    gap: 6px;
+  }
+
+  .nav-odoo-badge-icon img {
+    height: 8px;
+  }
+
+  .nav-odoo-badge-text strong {
+    font-size: 0.6rem;
+  }
+
+  .nav-odoo-badge-text span {
+    font-size: 0.6rem;
   }
 }

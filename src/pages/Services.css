@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   padding-top: 90px;
-  padding-bottom: var(--space-4xl);
+  padding-bottom: var(--space-2xl);
   position: relative;
   overflow: hidden;
 }
@@ -176,7 +176,7 @@
 
 /* Services Grid Section */
 .svc-grid-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-800);
   border-top: 1px solid var(--border-subtle);
 }
@@ -285,7 +285,7 @@
 
 /* Tech Section */
 .tech-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-900);
 }
 
@@ -343,7 +343,7 @@
 
 /* Process Section */
 .process-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-800);
   border-top: 1px solid var(--border-subtle);
 }
@@ -414,7 +414,7 @@
 
 /* CTA */
 .svc-cta {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-900);
 }
 
@@ -422,7 +422,7 @@
   background: var(--dark-700);
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
-  padding: var(--space-4xl);
+  padding: var(--space-2xl);
   position: relative;
   overflow: hidden;
   text-align: center;

@@ -78,8 +78,16 @@ const FloatingDock = ({ currentPage, onNavigate }) => {
                 style={{ transform: `scale(${scale})`, transformOrigin: 'bottom center' }}
                 onMouseEnter={() => setHovered(i)}
                 onClick={() => {
-                  if (item.id) onNavigate(item.id);
-                  else if (item.href) window.open(item.href, '_blank');
+                  // 1. Reset the dock to its original state immediately
+                  setMouseX(null);
+                  setHovered(null);
+
+                  // 2. Perform the navigation or link opening
+                  if (item.id) {
+                    onNavigate(item.id);
+                  } else if (item.href) {
+                    window.open(item.href, '_blank');
+                  }
                 }}
                 aria-label={item.label}
               >

@@ -2,7 +2,7 @@
    BENTO SECTION
 ══════════════════════════════════════════ */
 .bento-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-900);
 }
 
@@ -77,9 +77,19 @@
 .hub-wrap {
   position: relative;
   width: 100%;
-  /* Height = grid row minus header approx */
   height: 380px;
-  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Enforce 1:1 Aspect Ratio to ensure SVG and absolute items align perfectly */
+.hub-container-square {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1 / 1;
 }
 
 .hub-bg-svg {
@@ -90,34 +100,29 @@
   pointer-events: none;
 }
 
+/* Continuous smooth glow without the 10s delay */
 .hub-line-glow {
   stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-dasharray: 140;
-  stroke-dashoffset: 140;
-  opacity: 0;
+  stroke-dasharray: 40 100;
+  /* Dashboard creates a flowing effect */
+  opacity: 0.8;
   filter: blur(1px);
-  animation: linePulse 10s infinite;
-  /* 8 nodes * 0.7s */
+  animation: linePulseContinuous 1.8s linear infinite;
 }
 
-@keyframes linePulse {
+@keyframes linePulseContinuous {
   0% {
     stroke-dashoffset: 140;
     opacity: 0;
   }
 
-  2% {
-    opacity: 1;
-  }
-
-  12% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-
   15% {
-    opacity: 0;
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
   }
 
   100% {
@@ -131,14 +136,12 @@
   inset: 0;
 }
 
-/* Each node is absolutely placed */
 .hub-node {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  /* translate is applied via inline style */
 }
 
 .hub-node-bg {
@@ -146,7 +149,6 @@
   height: 46px;
   background: #1A1A1A;
   border: 1.5px solid;
-  /* color comes from inline style */
   border-radius: 13px;
   display: flex;
   align-items: center;
@@ -186,7 +188,6 @@
   background: #1E1E1E;
   border: 2px solid rgba(232, 182, 0, 0.55);
   border-radius: 18px;
-  /* left/top set via inline style */
 }
 
 .hub-center-glow {
@@ -218,7 +219,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .donut-header-row {
@@ -417,6 +418,7 @@
 
 .metrics-chart-box {
   flex: 1;
+  min-height: 140px;
 }
 
 .chart-months {
@@ -581,58 +583,6 @@
   line-height: 1.6;
 }
 
-.odoo-mods-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  flex: 1;
-}
-
-.odoo-mod-tile {
-  background: #181818;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 4px;
-  gap: 3px;
-  transition: all 0.25s ease;
-  animation: modFadeIn 0.5s ease forwards;
-  opacity: 0;
-}
-
-@keyframes modFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.odoo-mod-tile:hover {
-  background: rgba(232, 182, 0, 0.08);
-  border-color: rgba(232, 182, 0, 0.22);
-  transform: translateY(-2px);
-}
-
-.odoo-mod-tile span:first-child {
-  font-size: 1.05rem;
-  line-height: 1;
-}
-
-.odoo-mod-tile small {
-  font-size: 0.58rem;
-  color: var(--text-muted);
-  text-align: center;
-  font-weight: 500;
-}
-
 .odoo-cta-btn {
   display: flex;
   align-items: center;
@@ -719,6 +669,30 @@
   }
 
   .hub-wrap {
-    height: 300px;
+    height: 320px;
+  }
+
+  .donut-main-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .donut-legend-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bstats-grid {
+    grid-template-columns: 1fr;
+    /* Stack track record nicely on small screens */
+  }
+
+  .donut-legend-list {
+    grid-template-columns: 1fr;
+    /* Stack legend entries */
   }
 }

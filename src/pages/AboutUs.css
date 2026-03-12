@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   padding-top: 90px;
-  padding-bottom: var(--space-4xl);
+  padding-bottom: var(--space-2xl);
   position: relative;
   overflow: hidden;
 }
@@ -53,7 +53,7 @@
 
 /* Story */
 .story-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-800);
   border-top: 1px solid var(--border-subtle);
 }
@@ -61,7 +61,7 @@
 .story-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4xl);
+  gap: var(--space-2xl);
   align-items: center;
 }
 
@@ -144,7 +144,7 @@
 
 /* Values */
 .values-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-900);
 }
 
@@ -210,7 +210,7 @@
 
 /* Team */
 .team-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-800);
   border-top: 1px solid var(--border-subtle);
 }
@@ -270,7 +270,7 @@
 
 /* Reasons */
 .reasons-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-900);
 }
 
@@ -340,7 +340,7 @@
 
 /* CTA */
 .about-cta-section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-2xl) 0;
   background: var(--dark-800);
   border-top: 1px solid var(--border-subtle);
 }
@@ -349,7 +349,7 @@
   background: var(--dark-700);
   border: 1px solid var(--border);
   border-radius: var(--radius-2xl);
-  padding: var(--space-4xl);
+  padding: var(--space-2xl);
   position: relative;
   overflow: hidden;
   text-align: center;
