@@ -152,9 +152,6 @@ const Services = ({ onNavigate }) => {
                   </li>
                 ))}
               </ul>
-              <div className="svc-odoo-partner-badge">
-                <img src="/odoo_learning_partner_rgb.svg" alt="Authorised Odoo Partner" className="sopb-img" />
-              </div>
             </div>
           </div>
         </div>
