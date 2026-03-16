@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import emailjs from "@emailjs/browser";
 
 const ArrowRight = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -15,12 +16,46 @@ const Contact = ({ onNavigate }) => {
   const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setForm({ name: '', email: '', phone: '', company: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 4000);
+  e.preventDefault();
+
+  const templateParams = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      company: form.company,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    emailjs
+      .send(
+        "service_4lcohmz",
+        "template_2n11wcs",
+        templateParams,
+        "5SyzsmDCiKCQRtZGG"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setSubmitted(true);
+
+          setTimeout(() => {
+            setForm({
+              name: "",
+              email: "",
+              phone: "",
+              company: "",
+              subject: "",
+              message: "",
+            });
+            setSubmitted(false);
+          }, 4000);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          alert("Something went wrong. Please try again.");
+        }
+      );
   };
 
   const contactMethods = [

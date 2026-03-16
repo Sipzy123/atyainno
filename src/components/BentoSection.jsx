@@ -330,10 +330,6 @@ const MetricsChart = ({ onNavigate }) => {
             </div>
           </div>
         </div>
-        <button className="metrics-start-btn" onClick={() => onNavigate('contact')}>
-          Start Your Project
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
       </div>
     </div>
   );
