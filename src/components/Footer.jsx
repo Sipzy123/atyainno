@@ -67,7 +67,7 @@ const Footer = ({ onNavigate }) => {
             <h4>Services</h4>
             <ul>
               {links.services.map(s => (
-                <li key={s}><a href="#">{s}</a></li>
+                <li key={s}><button onClick={() => onNavigate('services')}>{s}</button></li>
               ))}
             </ul>
           </div>

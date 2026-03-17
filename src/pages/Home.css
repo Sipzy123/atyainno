@@ -179,7 +179,7 @@
 
 .hero-img {
   width: 100%;
-  max-width: 500px;
+  max-width: 800px;
   height: auto;
 
   /* IMPORTANT */
@@ -928,7 +928,7 @@
   }
 
   .hero-img {
-    max-width: 300px;
+    max-width: 650px;
   }
 
   .odoo-spot-inner {
@@ -968,7 +968,7 @@
   }
 
   .hero-img {
-    max-width: 230px;
+    max-width: 400px;
   }
 
   .odoo-modules-grid {

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Home.css';
 import BentoSection from '../components/BentoSection';
-import robotAnimation from "../assets/robot-hello.json";
+import robotAnimation from "../assets/developing.json";
 import { lazy, Suspense } from "react";
 
 const Lottie = lazy(() => import("lottie-react"));
