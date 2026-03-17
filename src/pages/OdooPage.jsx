@@ -72,10 +72,76 @@ const OdooPage = ({ onNavigate }) => {
   ];
 
   const industries = [
-    { icon: '🏭', name: 'Plastic Packaging', desc: 'Enhancing production tracking and quality control.', modules: ['Sales', 'Purchase', 'Inventory', 'Dashboard', 'Manufacturing', 'Maintenance', 'Quality', 'Payroll', 'HR'] },
-    { icon: '🧵', name: 'Textile Industries', desc: 'Optimizing supply chain and raw material management.', modules: ['Sales', 'Purchase', 'Inventory', 'Dashboard', 'Manufacturing', 'Maintenance', 'Quality', 'Payroll', 'HR'] },
-    { icon: '📦', name: 'Corrugated Box Packaging', desc: 'Streamlining bespoke orders and warehouse logistics.', modules: ['Sales', 'Purchase', 'Inventory', 'Dashboard', 'Manufacturing', 'Maintenance', 'Quality', 'Payroll', 'HR'] },
-    { icon: '📡', name: 'Network Infrastructure', desc: 'Managing large-scale deployments and field operations.', modules: ['Inventory', 'Dashboard', 'Payroll', 'HR'] },
+    {
+      icon: '🏭',
+      name: 'Manufacturing',
+      desc: 'End-to-end production management with BOM, MRP, and shop floor control.',
+      modules: [
+        'Manufacturing',
+        'Inventory',
+        'Purchase',
+        'Maintenance',
+        'Quality',
+        'Sales',
+        'Shop Floor',
+        'CRM',
+        'Accounting',
+        'Dashboard',
+        'HR',
+        'Payroll',
+        'Barcode'
+      ]
+    },
+    {
+      icon: '📦',
+      name: 'Corrugated Box Packaging',
+      desc: 'Manage custom box production, sheet planning, and order-based manufacturing efficiently.',
+      modules: [
+        'Manufacturing',
+        'Inventory',
+        'Purchase',
+        'Maintenance',
+        'Quality',
+        'Sales',
+        'Shop Floor',
+        'CRM',
+        'Accounting',
+        'Dashboard',
+        'HR',
+        'Payroll',
+        'Barcode'
+      ]
+    },
+    {
+      icon: '🛒',
+      name: 'Retail & eCommerce',
+      desc: 'Omnichannel retail operations with POS, online store, and inventory sync.',
+      modules: [
+        'Point of Sale',
+        'Inventory',
+        'Sales',
+        'Website',
+        'eCommerce',
+        'CRM',
+        'Accounting',
+        'Marketing Automation'
+      ]
+    },
+    {
+      icon: '🏢',
+      name: 'Professional Services',
+      desc: 'Manage projects, clients, billing, and team productivity efficiently.',
+      modules: [
+        'Project',
+        'Timesheets',
+        'CRM',
+        'Sales',
+        'Accounting',
+        'HR',
+        'Payroll',
+        'Helpdesk'
+      ]
+    }
   ];
 
   return (
@@ -172,7 +238,7 @@ const OdooPage = ({ onNavigate }) => {
         <div className="container">
           <div className="section-header centered">
             <div className="section-label">Coverage</div>
-            <h2 className="section-title">Modules We<br /><span>Support</span></h2>
+            <h2 className="section-title">Modules Odoo<br /><span>Supports</span></h2>
           </div>
           <div className="odoo-mod-grid">
             {modules.map((m, i) => (
