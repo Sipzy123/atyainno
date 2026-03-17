@@ -1,24 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = ({ onNavigate }) => {
+const Footer = () => {
   const year = new Date().getFullYear();
 
   const links = {
     company: [
-      { label: 'Home', id: 'home' },
-      { label: 'Services', id: 'services' },
-      { label: 'Odoo Solutions', id: 'odoo' },
-      { label: 'About Us', id: 'about' },
-      { label: 'Contact', id: 'contact' },
+      { label: 'Home', path: '/' },
+      { label: 'Services', path: '/services' },
+      { label: 'Odoo Solutions', path: '/odoo-erp' },
+      { label: 'About Us', path: '/about' },
+      { label: 'Contact', path: '/contact' },
     ],
     services: [
-      'Software Development',
-      'Web Development',
-      'Mobile Apps',
-      'Odoo Implementation',
-      'UI/UX Design',
-      'Cloud Solutions',
+      { label: 'Software Development', path: '/services' },
+      { label: 'Web Development', path: '/services' },
+      { label: 'Mobile Apps', path: '/services' },
+      { label: 'Odoo Implementation', path: '/odoo-erp' },
+      { label: 'UI/UX Design', path: '/services' },
+      { label: 'Cloud Solutions', path: '/services' },
     ],
   };
 
@@ -28,7 +29,9 @@ const Footer = ({ onNavigate }) => {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <img src="logo.png" alt="Atya Inno Logo" className="footer-logo" />
+            <Link to="/" className="footer-logo-link">
+              <img src="/logo.png" alt="Atya Inno Logo" className="footer-logo" />
+            </Link>
             <p className="footer-tagline">
               An India-based IT company bringing innovative tech solutions to transform your business.
             </p>
@@ -45,7 +48,7 @@ const Footer = ({ onNavigate }) => {
                 Group Company
               </h4>
               <img
-                src="welogical_logo.png"
+                src="/welogical_logo.png"
                 alt="Welogical"
                 style={{ height: '50px', width: 'auto', opacity: 0.9 }}
               />
@@ -56,8 +59,8 @@ const Footer = ({ onNavigate }) => {
             <h4>Company</h4>
             <ul>
               {links.company.map(l => (
-                <li key={l.id}>
-                  <button onClick={() => onNavigate(l.id)}>{l.label}</button>
+                <li key={l.path}>
+                  <Link to={l.path}>{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -66,8 +69,10 @@ const Footer = ({ onNavigate }) => {
           <div className="footer-col">
             <h4>Services</h4>
             <ul>
-              {links.services.map(s => (
-                <li key={s}><button onClick={() => onNavigate('services')}>{s}</button></li>
+              {links.services.map((s, idx) => (
+                <li key={idx}>
+                  <Link to={s.path}>{s.label}</Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -75,7 +80,7 @@ const Footer = ({ onNavigate }) => {
           <div className="footer-col footer-contact-col">
             <h4>Get In Touch</h4>
             <div className="footer-contact-items">
-              <a href="tel:+912632359197" className="footer-contact-item">
+              <a href="tel:+918141118006" className="footer-contact-item">
                 <span className="fci-icon">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.2 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" /></svg>
                 </span>

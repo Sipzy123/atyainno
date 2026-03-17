@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BentoSection.css';
 
 /* ─── Animated counter ─── */
@@ -62,14 +63,11 @@ const IntegrationHub = () => {
 
   return (
     <div className="hub-wrap" ref={ref}>
-      {/* Container enforces a 1:1 Aspect Ratio to keep SVG lines and Nodes perfectly aligned on all screens */}
       <div className="hub-container-square">
-        {/* SVG for rings + lines only */}
         <svg className="hub-bg-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx={CX} cy={CY} r={R} stroke="rgba(232,182,0,0.10)" strokeWidth="1" strokeDasharray="5 7" />
           <circle cx={CX} cy={CY} r={R * 0.55} stroke="rgba(232,182,0,0.06)" strokeWidth="1" strokeDasharray="3 9" />
 
-          {/* Base dashed lines */}
           {nodes.map((n, i) => (
             <line key={`base-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
               stroke="rgba(232,182,0,0.2)" strokeWidth="1" strokeDasharray="4 5"
@@ -77,7 +75,6 @@ const IntegrationHub = () => {
             />
           ))}
 
-          {/* Continuous Glowing lines (No delays) */}
           {nodes.map((n, i) => (
             <line key={`glow-${i}`} x1={CX} y1={CY} x2={n.x} y2={n.y}
               className="hub-line-glow"
@@ -86,7 +83,6 @@ const IntegrationHub = () => {
           ))}
         </svg>
 
-        {/* Node icons positioned via CSS */}
         <div className="hub-nodes-layer">
           {nodes.map((n, i) => {
             const px = (n.x / 400) * 100;
@@ -109,7 +105,6 @@ const IntegrationHub = () => {
             );
           })}
 
-          {/* Center */}
           <div className="hub-center"
             style={{
               left: `${(CX / 400) * 100}%`,
@@ -208,58 +203,8 @@ const DonutChart = () => {
   );
 };
 
-/* ─── Stats Cell ─── */
-// const StatsCell = () => {
-//   const [visible, setVisible] = useState(false);
-//   const ref = useRef();
-//   const started = useRef(false);
-//   useEffect(() => {
-//     const obs = new IntersectionObserver(([e]) => {
-//       if (!e.isIntersecting || started.current) return;
-//       started.current = true;
-//       setVisible(true);
-//       obs.disconnect();
-//     }, { threshold: 0.3 });
-//     if (ref.current) obs.observe(ref.current);
-//     return () => obs.disconnect();
-//   }, []);
-
-//   const bars = [90, 75, 85, 60, 95, 70, 88];
-
-//   return (
-//     <div className="bento-stats" ref={ref}>
-//       <span className="bento-tag">Track Record</span>
-//       <div className="bstats-grid">
-//         {[
-//           { n: 50, s: '+', label: 'Projects' },
-//           { n: 30, s: '+', label: 'Clients' },
-//           { n: 98, s: '%', label: 'Satisfaction' },
-//           { n: 8,  s: '+', label: 'Yrs Exp.' },
-//         ].map(({ n, s, label }) => (
-//           <div key={label} className="bstat-box">
-//             <strong><Num end={n} suffix={s} /></strong>
-//             <span>{label}</span>
-//           </div>
-//         ))}
-//       </div>
-//       <div className="bstats-bar-row">
-//         {bars.map((h, i) => (
-//           <div key={i} className="bsbar-track">
-//             <div className="bsbar-fill"
-//               style={{
-//                 height: visible ? `${h}%` : '2px',
-//                 transition: `height 0.8s cubic-bezier(0.4,0,0.2,1)`,
-//               }}
-//             />
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
 /* ─── Metrics Chart ─── */
-const MetricsChart = ({ onNavigate }) => {
+const MetricsChart = () => {
   const [animated, setAnimated] = useState(false);
   const ref = useRef();
   const started = useRef(false);
@@ -328,7 +273,9 @@ const MetricsChart = ({ onNavigate }) => {
 
 /* ─── Odoo Cell ─── */
 
-const OdooCell = ({ onNavigate }) => (
+const OdooCell = () => {
+  const navigate = useNavigate();
+  return (
   <div className="bento-odoo">
     <div className="odoo-pill-row">
       <div className="odoo-cert-pill">
@@ -353,15 +300,16 @@ const OdooCell = ({ onNavigate }) => (
         </div>
       ))}
     </div>
-    <button className="odoo-cta-btn" onClick={() => onNavigate('odoo')}>
+    <button className="odoo-cta-btn" onClick={() => navigate('/odoo-erp')}>
       Explore Solutions
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
     </button>
   </div>
-);
+  );
+};
 
 /* ─── Root ─── */
-const BentoSection = ({ onNavigate }) => (
+const BentoSection = () => (
   <section className="bento-section">
     <div className="container">
       <div className="section-header centered">
@@ -384,8 +332,8 @@ const BentoSection = ({ onNavigate }) => (
         </div>
 
         <div className="bento-cell bc-donut"><DonutChart /></div>
-        <div className="bento-cell bc-metrics"><MetricsChart onNavigate={onNavigate} /></div>
-        <div className="bento-cell bc-odoo"><OdooCell onNavigate={onNavigate} /></div>
+        <div className="bento-cell bc-metrics"><MetricsChart /></div>
+        <div className="bento-cell bc-odoo"><OdooCell /></div>
       </div>
     </div>
   </section>

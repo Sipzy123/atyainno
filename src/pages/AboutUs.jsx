@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AboutUs.css';
 
 const ArrowRight = () => (
@@ -7,7 +8,15 @@ const ArrowRight = () => (
   </svg>
 );
 
-const AboutUs = ({ onNavigate }) => {
+const AboutUs = () => {
+  const navigate = useNavigate();
+
+  const onNavigate = (path) => {
+    if (path === 'home') navigate('/');
+    else if (path === 'odoo') navigate('/odoo-erp');
+    else navigate(`/${path}`);
+  };
+
   const values = [
     { icon: '/innovation.png', title: 'Innovation', desc: 'We embrace cutting-edge technologies and creative thinking to solve complex business challenges.' },
     { icon: '/colaboration.png', title: 'Collaboration', desc: 'We partner closely with clients, treating their goals as our own throughout every project.' },

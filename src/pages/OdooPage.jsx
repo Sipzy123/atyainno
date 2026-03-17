@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './OdooPage.css';
 
 const ArrowRight = () => (
@@ -7,7 +8,15 @@ const ArrowRight = () => (
   </svg>
 );
 
-const OdooPage = ({ onNavigate }) => {
+const OdooPage = () => {
+  const navigate = useNavigate();
+
+  const onNavigate = (path) => {
+    if (path === 'home') navigate('/');
+    else if (path === 'odoo') navigate('/odoo-erp');
+    else navigate(`/${path}`);
+  };
+
   const services = [
     { 
       icon: '/implementation.png',

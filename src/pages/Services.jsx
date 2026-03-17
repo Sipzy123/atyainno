@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Services.css';
 
 const ArrowRight = () => (
@@ -7,7 +8,15 @@ const ArrowRight = () => (
   </svg>
 );
 
-const Services = ({ onNavigate }) => {
+const Services = () => {
+  const navigate = useNavigate();
+
+  const onNavigate = (path) => {
+    if (path === 'home') navigate('/');
+    else if (path === 'odoo') navigate('/odoo-erp');
+    else navigate(`/${path}`);
+  };
+
   const mainServices = [
     {
       icon: '✧',

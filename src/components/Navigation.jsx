@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({ currentPage, onNavigate }) => {
+const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -12,30 +13,39 @@ const Navigation = ({ currentPage, onNavigate }) => {
   }, []);
 
   const navItems = [
-    { label: 'Home', id: 'home' },
-    { label: 'Services', id: 'services' },
-    { label: 'Odoo', id: 'odoo' },
-    { label: 'About', id: 'about' },
-    { label: 'Contact', id: 'contact' },
+    { label: 'Home', path: '/' },
+    { label: 'Services', path: '/services' },
+    { label: 'Odoo', path: '/odoo-erp' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container container">
-        <button className="nav-logo" onClick={() => onNavigate('home')}>
-          <img src="/logo.png" alt="Atya Inno" />
-        </button>
+        <Link 
+          to="/" 
+          className="nav-logo" 
+          onClick={() => setIsOpen(false)}
+        >
+          <img src="/logo.png" alt="Atya Inno LLP" />
+        </Link>
 
         <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              className={`nav-link ${currentPage === item.id ? 'active' : ''}`}
-              onClick={() => { onNavigate(item.id); setIsOpen(false); }}
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}
             >
-              {item.label}
-              {currentPage === item.id && <span className="nav-dot" />}
-            </button>
+              {({ isActive }) => (
+                <>
+                  {item.label}
+                  {isActive && <span className="nav-dot" />}
+                </>
+              )}
+            </NavLink>
           ))}
 
           <div className="mobile-nav-extras">

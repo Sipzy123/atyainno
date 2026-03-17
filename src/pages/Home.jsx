@@ -42,8 +42,17 @@ const Counter = ({ end, suffix = '' }) => {
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
-const Home = ({ onNavigate }) => {
+import { useNavigate } from 'react-router-dom';
+
+const Home = () => {
+  const navigate = useNavigate();
   const servicesRef = useRef(null);
+
+  const onNavigate = (path) => {
+    if (path === 'home') navigate('/');
+    else if (path === 'odoo') navigate('/odoo-erp');
+    else navigate(`/${path}`);
+  };
 
   const services = [
     {
@@ -275,7 +284,7 @@ const Home = ({ onNavigate }) => {
 
           <div className="services-grid">
             {services.map((s, i) => (
-              <div key={i} className="service-card" onClick={() => onNavigate('services')}>
+              <div key={i} className="service-card" onClick={() => navigate('/services')}>
                 <div className="sc-icon">{s.icon}</div>
                 <div className="sc-label">{s.label}</div>
                 <h3 className="sc-title">{s.title}</h3>
@@ -319,10 +328,10 @@ const Home = ({ onNavigate }) => {
               ))}
             </ul>
             <div className="odoo-spot-actions">
-              <button className="btn btn-gold" onClick={() => onNavigate('odoo')}>
+              <button className="btn btn-gold" onClick={() => navigate('/odoo-erp')}>
                 Explore Odoo Solutions <ArrowRight />
               </button>
-              <button className="btn btn-outline" onClick={() => onNavigate('contact')}>
+              <button className="btn btn-outline" onClick={() => navigate('/contact')}>
                 Free Consultation
               </button>
             </div>

@@ -1,135 +1,162 @@
-import React, { useState, useEffect } from 'react';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import FloatingDock from './components/FloatingDock';
-import ScrollToTop from './components/ScrollToTop';
-import SEO from './components/SEO';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import OdooPage from './pages/OdooPage';
-import AboutUs from './pages/AboutUs';
-import Contact from './pages/Contact';
-import './styles/globals.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
-const App = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+import FloatingDock from "./components/FloatingDock";
+import ScrollToTop from "./components/ScrollToTop";
+import SEO from "./components/SEO";
 
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import OdooPage from "./pages/OdooPage";
+import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
-  useEffect(() => {
-    document.title = `Atya Inno — ${currentPage === 'home' ? 'IT Innovation Partner' :
-      currentPage === 'services' ? 'Our Services' :
-        currentPage === 'odoo' ? 'Odoo Solutions' :
-          currentPage === 'about' ? 'About Us' :
-            'Contact Us'
-      }`;
-  }, [currentPage]);
+import "./styles/globals.css";
 
-  const pages = {
-    home: <Home onNavigate={handleNavigate} />,
-    services: <Services onNavigate={handleNavigate} />,
-    odoo: <OdooPage onNavigate={handleNavigate} />,
-    about: <AboutUs onNavigate={handleNavigate} />,
-    contact: <Contact onNavigate={handleNavigate} />,
-  };
+const seoData = {
+  home: {
+    title: "Atya Inno LLP | IT Company in Valsad, Gujarat – Custom Software, Odoo ERP, AI & Web Development India",
+    description: "Atya Inno LLP is a leading IT company in Valsad, Gujarat, India offering custom software development, Odoo ERP implementation, AI solutions, web & mobile app development. We serve clients across India, USA, UK and globally with scalable digital solutions.",
+    canonical: "https://atyainno.com/",
+    keywords: "IT company in Valsad, software company Gujarat, IT services India, custom software development India, Odoo ERP implementation India, web development company Gujarat, mobile app development India, AI development company India, SaaS development India, hire developers India, React Node Flutter developers, ERP for manufacturing India, digital transformation company India",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Atya Inno LLP",
+      "url": "https://atyainno.com/",
+      "telephone": "+91-8141118006",
+      "email": "contact@atyainno.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Valsad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "India"
+      },
+      "areaServed": ["India", "United States", "United Kingdom", "Global"],
+      "sameAs": [
+        "https://www.linkedin.com/company/atya-inno-llp/",
+        "https://www.instagram.com/welogical.solutions/?hl=en",
+        "http://facebook.com/WeLogicalSolutions"
+      ]
+    }
+  },
 
-  const seoData = {
-    home: {
-      title: "Atya Inno — IT Innovation Partner",
-      description: "Atya Inno is India's leading IT innovation company specializing in custom software, mobile apps, and Odoo ERP solutions.",
-      canonical: "https://atyainno.com/",
-      keywords: "custom software, odoo erp india, it consulting, mobile app development, website development, website redesign, software development company, ai solutions, chatbot, agentic ai, software development company in valsad, software development company in gujarat, software development company in india, odoo development company in valsad, odoo development company in gujarat, odoo development company in india",
-      schema: {
-        "@context": "https://schema.org",
+  services: {
+    title: "IT Services Company in India | Custom Software, AI, Web & Mobile Development – Atya Inno",
+    description: "Explore Atya Inno's IT services including custom software development, SaaS platforms, AI solutions, chatbot development, web applications, and mobile apps for businesses in India and globally.",
+    canonical: "https://atyainno.com/services",
+    keywords: "IT services India, custom software development company India, SaaS development India, AI development services India, chatbot development India, web app development India, mobile app developers India, React development company India, Node.js development India, Flutter app development India",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Software & IT Services",
+      "provider": {
         "@type": "Organization",
-        "name": "Atya Inno",
-        "url": "https://atyainno.com/",
-        "logo": "https://atyainno.com/website_logo.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-9926012658",
-          "contactType": "customer service"
-        }
-      }
-    },
-    services: {
-      title: "Our Services — Atya Inno",
-      description: "Explore our range of IT services including custom software development, mobile apps, and digital transformation.",
-      canonical: "https://atyainno.com/#services",
-      keywords: "it services, software development, custom solutions, tech consulting, ai solutions, agenticai, chatbots, ai development, website development, website redesign, mobile app development, odoo implementation, staff augmentation",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "IT Solutions",
-        "provider": {
-          "@type": "Organization",
-          "name": "Atya Inno"
-        },
-        "description": "Custom software development, websites, mobile apps, AI solutions and digital transformation services."
-      }
-    },
-    odoo: {
-      title: "Odoo ERP Solutions — Atya Inno",
-      description: "Implement Odoo ERP to streamline your business processes. Expert Odoo implementation and customization services.",
-      canonical: "https://atyainno.com/#odoo",
-      keywords: "odoo erp, odoo implementation india, business automation, erp solutions, manufacturing, retail, wholesale, inventory management, crm, project management, hr management, accounting, pos, odoo development, odoo customization, odoo support, odoo partner",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "serviceType": "Odoo ERP Implementation",
-        "provider": {
-          "@type": "Organization",
-          "name": "Atya Inno"
-        }
-      }
-    },
-    about: {
-      title: "About Us — Atya Inno",
-      description: "Learn about Atya Inno's journey, our mission to innovate, and the dedicated team of expert developers and designers.",
-      canonical: "https://atyainno.com/#about",
-      keywords: "about atya inno, tech innovation team, it company mission, software experts india",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "mainEntity": {
-          "@type": "Organization",
-          "name": "Atya Inno",
-          "description": "An India-based IT company bringing innovative tech solutions to transform your business."
-        }
-      }
-    },
-    contact: {
-      title: "Contact Us — Atya Inno",
-      description: "Get in touch with Atya Inno for custom software development, mobile apps, or Odoo ERP solutions. Reach out for a free consultation.",
-      canonical: "https://atyainno.com/#contact",
-      keywords: "contact it company, hire software developers, atya inno contact, software development inquiry",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "ContactPage",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-8141118006",
-          "contactType": "customer service",
-          "email": "contact@atyainno.com"
-        }
+        "name": "Atya Inno LLP"
+      },
+      "areaServed": "Global",
+      "description": "Custom software, AI, SaaS, web and mobile development services."
+    }
+  },
+
+  odoo: {
+    title: "Odoo ERP Implementation in India | Odoo Partner in Gujarat – Atya Inno LLP",
+    description: "Get expert Odoo ERP implementation, customization, migration, and support services in Gujarat, India. Automate your business with CRM, Inventory, Accounting, HR and Manufacturing modules.",
+    canonical: "https://atyainno.com/odoo-erp",
+    keywords: "Odoo ERP India, Odoo implementation Gujarat, Odoo partner India, ERP for manufacturing India, ERP for textile industry India, CRM ERP India, Odoo customization services India, Odoo support India, business automation India",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Odoo ERP Implementation",
+      "provider": {
+        "@type": "Organization",
+        "name": "Atya Inno LLP"
+      },
+      "areaServed": ["India", "Global"]
+    }
+  },
+
+  about: {
+    title: "About Atya Inno LLP | IT Company in Valsad Gujarat Delivering Global Solutions",
+    description: "Atya Inno LLP is an innovation-driven IT company based in Valsad, Gujarat, India providing custom software, AI, ERP, and digital transformation solutions to clients worldwide.",
+    canonical: "https://atyainno.com/about",
+    keywords: "about Atya Inno LLP, IT company Valsad Gujarat, software company India, AI company India, ERP company Gujarat, digital transformation company India, tech company India",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Atya Inno LLP",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Valsad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "India"
+      },
+      "description": "A Gujarat-based IT company delivering global digital solutions."
+    }
+  },
+
+  contact: {
+    title: "Contact Atya Inno LLP | Hire Developers in India | IT Services Gujarat",
+    description: "Contact Atya Inno LLP in Valsad, Gujarat for custom software development, Odoo ERP, AI solutions, web & mobile apps. Get a free consultation and hire expert developers in India.",
+    canonical: "https://atyainno.com/contact",
+    keywords: "hire developers India, IT company contact Gujarat, software development company contact India, Odoo consultation India, web development company India contact, mobile app developers India hire",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8141118006",
+        "contactType": "sales",
+        "email": "contact@atyainno.com",
+        "areaServed": "Global"
       }
     }
-  };
-
-  return (
-    <div className="app">
-      <SEO {...seoData[currentPage]} />
-      <div className="noise-overlay" />
-      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-      <main>{pages[currentPage]}</main>
-      <Footer onNavigate={handleNavigate} />
-      <FloatingDock currentPage={currentPage} onNavigate={handleNavigate} />
-      <ScrollToTop />
-    </div>
-  );
+  }
 };
+
+// 🔥 Dynamic SEO based on route
+const SEOHandler = () => {
+  const location = useLocation();
+
+  const path = location.pathname;
+
+  let pageKey = "home";
+  if (path.includes("services")) pageKey = "services";
+  else if (path.includes("odoo")) pageKey = "odoo";
+  else if (path.includes("about")) pageKey = "about";
+  else if (path.includes("contact")) pageKey = "contact";
+
+  return <SEO {...seoData[pageKey]} />;
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <SEOHandler />
+
+      <div className="app">
+        <div className="noise-overlay" />
+
+        <Navigation />
+
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/odoo-erp" element={<OdooPage />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+
+        <Footer />
+        <FloatingDock />
+        <ScrollToTop />
+      </div>
+    </BrowserRouter>
+  );
+}
 
 export default App;
