@@ -9,12 +9,42 @@ const ArrowRight = () => (
 
 const OdooPage = ({ onNavigate }) => {
   const services = [
-    { icon: '⚙️', title: 'Odoo Implementation', desc: 'Complete ERP setup, configuration, and go-live support tailored to your business processes.', features: ['System Configuration', 'Module Selection', 'Data Migration', 'Go-Live Support'] },
-    { icon: '🔧', title: 'Custom Module Dev', desc: 'Build custom Odoo modules to extend core functionality and meet specific requirements.', features: ['Custom Modules', 'API Integration', 'Automation', 'Performance Tuning'] },
-    { icon: '🎨', title: 'Odoo Customization', desc: 'Tailor Odoo modules, workflows and UI to exactly match your business operations.', features: ['Workflow Design', 'Field Customization', 'Custom Reports', 'UI Enhancement'] },
-    { icon: '🎓', title: 'Training & Support', desc: 'Comprehensive training programs and dedicated ongoing support for your entire team.', features: ['User Training', 'Admin Training', 'Documentation', 'Technical Support'] },
-    { icon: '📈', title: 'Process Optimization', desc: 'Analyze and optimize your business processes leveraging full Odoo capabilities.', features: ['Process Mapping', 'Gap Analysis', 'Automation', 'KPI Tracking'] },
-    { icon: '🛡️', title: 'Security & Compliance', desc: 'Ensure your Odoo system meets the highest security and compliance standards.', features: ['Access Control', 'Data Security', 'Audit Trails', 'GDPR Compliance'] },
+    { 
+      icon: '/implementation.png',
+      title: 'Odoo Implementation',
+      desc: 'Complete ERP setup, configuration, and go-live support tailored to your business processes.',
+      features: ['System Configuration', 'Module Selection', 'Data Migration', 'Go-Live Support']
+    },
+    { 
+      icon: '/custom_module.png',
+      title: 'Custom Module Dev',
+      desc: 'Build custom Odoo modules to extend core functionality and meet specific requirements.',
+      features: ['Custom Modules', 'API Integration', 'Automation', 'Performance Tuning']
+    },
+    { 
+      icon: '/customization.png',
+      title: 'Odoo Customization',
+      desc: 'Tailor Odoo modules, workflows and UI to exactly match your business operations.',
+      features: ['Workflow Design', 'Field Customization', 'Custom Reports', 'UI Enhancement']
+    },
+    { 
+      icon: '/training.png',
+      title: 'Training & Support',
+      desc: 'Comprehensive training programs and dedicated ongoing support for your entire team.',
+      features: ['User Training', 'Admin Training', 'Documentation', 'Technical Support']
+    },
+    { 
+      icon: '/optimization.png',
+      title: 'Process Optimization',
+      desc: 'Analyze and optimize your business processes leveraging full Odoo capabilities.',
+      features: ['Process Mapping', 'Gap Analysis', 'Automation', 'KPI Tracking']
+    },
+    { 
+      icon: '/security.png',
+      title: 'Security & Compliance',
+      desc: 'Ensure your Odoo system meets the highest security and compliance standards.',
+      features: ['Access Control', 'Data Security', 'Audit Trails', 'GDPR Compliance']
+    },
   ];
 
   const modules = [
@@ -34,12 +64,11 @@ const OdooPage = ({ onNavigate }) => {
 
   const timeline = [
     { phase: 'Phase 1', title: 'Collect Requirements', duration: 'Step 1', desc: 'Gathering and analyzing all client requirements.' },
-    { phase: 'Phase 2', title: 'Brainstorming', duration: 'Step 2', desc: 'Brainstorming the requirements and how it can be implemented in the easiest way.' },
-    { phase: 'Phase 3', title: 'Custom Demo', duration: 'Step 3', desc: 'Create a Custom Demo based on their requirement.' },
-    { phase: 'Phase 4', title: 'Customization & Implementation', duration: 'Step 4', desc: 'Upon fulfilling the requirement the actual customization and implementation starts.' },
-    { phase: 'Phase 5', title: 'Testing & Optimization', duration: 'Step 5', desc: 'Comprehensive QA, performance optimization, and user acceptance testing.' },
-    { phase: 'Phase 6', title: 'Training & Go Live', duration: 'Step 6', desc: 'Team training and production deployment.' },
-    { phase: 'Phase 7', title: 'Post Launch Support', duration: 'Ongoing', desc: 'Continuous support, improvements, and system optimization.' },
+    { phase: 'Phase 2', title: 'Brainstorming & Demo Creation', duration: 'Step 2', desc: 'Brainstorming the requirements and how it can be implemented in the easiest way.' },
+    { phase: 'Phase 3', title: 'Customization & Implementation', duration: 'Step 3', desc: 'Upon fulfilling the requirement the actual customization and implementation starts.' },
+    { phase: 'Phase 4', title: 'Testing & Optimization', duration: 'Step 4', desc: 'Comprehensive QA, performance optimization, and user acceptance testing.' },
+    { phase: 'Phase 5', title: 'Training & Go Live', duration: 'Step 5', desc: 'Team training and production deployment.' },
+    { phase: 'Phase 6', title: 'Post Launch Support', duration: 'Ongoing', desc: 'Continuous support, improvements, and system optimization.' },
   ];
 
   const industries = [
@@ -66,7 +95,7 @@ const OdooPage = ({ onNavigate }) => {
               <img src="/odoo_logo_inverted.png" alt="Odoo" className="odoo-hero-logo" />
               <div className="odoo-cert-pill">
                 <span className="ocp-pulse" />
-                Authorise Implementation Partner
+                Authorised Implementation Partner
               </div>
             </div>
 
@@ -122,7 +151,9 @@ const OdooPage = ({ onNavigate }) => {
           <div className="odoo-svc-grid">
             {services.map((s, i) => (
               <div key={i} className="odoo-svc-card" onClick={() => onNavigate('contact')}>
-                <span className="odoo-svc-icon">{s.icon}</span>
+                <span className="odoo-svc-icon">
+                  <img src={s.icon} alt={s.title} className="odoo-svc-img" />
+                </span>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
                 <ul>
@@ -191,15 +222,15 @@ const OdooPage = ({ onNavigate }) => {
           </div>
           <div className="why-odoo-grid">
             {[
-              { icon: '🔗', title: 'All-in-One', desc: 'Replace 10+ fragmented tools with one unified platform that covers every business process.' },
-              { icon: '📱', title: 'Mobile Access', desc: 'Manage your entire business from anywhere with powerful native mobile applications.' },
-              { icon: '📊', title: 'Real-Time Analytics', desc: 'Make data-driven decisions with beautiful dashboards and instant business insights.' },
-              { icon: '🚀', title: 'Scalable', desc: 'Grows from startup to enterprise — add modules and users as your business expands.' },
-              { icon: '🌍', title: 'Open Source', desc: 'Community-driven development with thousands of third-party apps and integrations.' },
-              { icon: '💰', title: 'Cost Effective', desc: 'Dramatically lower TCO compared to proprietary ERP systems like SAP or Oracle.' },
+              { icon: '/allinone.png', title: 'All-in-One', desc: 'Replace 10+ fragmented tools with one unified platform that covers every business process.' },
+              { icon: '/mobile.png', title: 'Mobile Access', desc: 'Manage your entire business from anywhere with powerful native mobile applications.' },
+              { icon: '/analytics.png', title: 'Real-Time Analytics', desc: 'Make data-driven decisions with beautiful dashboards and instant business insights.' },
+              { icon: '/scalable.png', title: 'Scalable', desc: 'Grows from startup to enterprise — add modules and users as your business expands.' },
+              { icon: '/opensource.png', title: 'Open Source', desc: 'Community-driven development with thousands of third-party apps and integrations.' },
+              { icon: '/cost.png', title: 'Cost Effective', desc: 'Dramatically lower TCO compared to proprietary ERP systems like SAP or Oracle.' },
             ].map((w, i) => (
               <div key={i} className="why-odoo-card">
-                <span className="woc-icon">{w.icon}</span>
+                <span className="woc-icon"><img src={w.icon} alt={w.title} className="why-odoo-svg" /></span>
                 <h3>{w.title}</h3>
                 <p>{w.desc}</p>
               </div>

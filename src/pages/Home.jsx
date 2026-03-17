@@ -207,7 +207,7 @@ const Home = ({ onNavigate }) => {
               {[
                 { n: 50, s: '+', label: 'Projects Delivered' },
                 { n: 30, s: '+', label: 'Happy Clients' },
-                { n: 10, s: '+', label: 'Years Experience' },
+                { n: 15, s: '+', label: 'Years Experience' },
                 { n: 25, s: '+', label: 'Team Members' },
               ].map(({ n, s, label }) => (
                 <div key={label} className="hero-stat">
@@ -219,42 +219,12 @@ const Home = ({ onNavigate }) => {
           </div>
 
           <div className="hero-visual fade-up fade-up-delay-2">
-            <div className="hero-card-stack">
-              <div className="hcs-card hcs-card-bg" />
-              <div className="hcs-card hcs-card-mid" />
-              <div className="hcs-card hcs-card-front">
-                <div className="hcs-front-header">
-                  <div className="hcs-dots">
-                    <span /><span /><span />
-                  </div>
-                  <span className="hcs-label">atya<span>inno</span></span>
-                </div>
-                <div className="hcs-metrics">
-                  {[
-                    { label: 'Projects Active', value: '12', up: true },
-                    { label: 'Client Satisfaction', value: '98%', up: true },
-                    { label: 'On-time Delivery', value: '100%', up: true },
-                  ].map(m => (
-                    <div key={m.label} className="hcs-metric">
-                      <span className="hcs-metric-label">{m.label}</span>
-                      <span className="hcs-metric-value">{m.value}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="hcs-notification">
-                  <div className="hcs-notif-avatar">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <div className="hcs-notif-body">
-                    <span className="hcs-notif-title">System Deployed</span>
-                    <span className="hcs-notif-desc">v3.5.0 launched to production</span>
-                  </div>
-                  <span className="hcs-notif-time">now</span>
-                </div>
-                <div className="hcs-footer">
-                  <span className="hcs-status"><span className="hcs-pulse" /> All systems operational</span>
-                </div>
-              </div>
+            <div className="hero-image-wrap">
+              <img
+                src="/hero2.png"
+                alt="atyainno digital solutions"
+                className="hero-img"
+              />
             </div>
           </div>
         </div>
@@ -363,7 +333,6 @@ const Home = ({ onNavigate }) => {
                 { icon: '/hr.svg', name: 'HR' },
                 { icon: '/purchase.svg', name: 'Purchase' },
                 { icon: '/dashboard.svg', name: 'Analytics' },
-                { icon: '/website.svg', name: 'Website' },
               ].map((m, i) => (
                 <div key={m.name} className="odoo-mod" style={{ animationDelay: `${i * 0.06}s` }}>
                   <span><img src={m.icon} alt={m.name} className="odoo-home-mod-svg" /></span>
@@ -399,7 +368,7 @@ const Home = ({ onNavigate }) => {
           <div className="why-grid">
             {[
               { n: '01', title: 'Proven Track Record', desc: '50+ successful projects delivered across industries with 100% client satisfaction.' },
-              { n: '02', title: 'Expert Team', desc: 'Highly skilled professionals with 8+ years average experience in cutting-edge technologies.' },
+              { n: '02', title: 'Expert Team', desc: 'Highly skilled professionals with 15+ years average experience in cutting-edge technologies.' },
               { n: '03', title: 'Tailored Solutions', desc: 'No cookie-cutter approaches — every solution is architected specifically for your needs.' },
               { n: '04', title: 'Transparent Process', desc: 'Real-time updates, clear communication, and full visibility throughout the project lifecycle.' },
               { n: '05', title: 'Competitive Pricing', desc: 'World-class quality at competitive rates. Maximum ROI for your technology investment.' },
@@ -409,37 +378,6 @@ const Home = ({ onNavigate }) => {
                 <span className="why-num">{w.n}</span>
                 <h3>{w.title}</h3>
                 <p>{w.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS ── */}
-      <section className="testimonials-section">
-        <div className="container">
-          <div className="section-header centered">
-            <div className="section-label">Client Stories</div>
-            <h2 className="section-title">
-              What Our Clients<br /><span>Say About Us</span>
-            </h2>
-          </div>
-
-          <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
-              <div key={i} className="tcard">
-                <div className="tcard-stars">
-                  {'★'.repeat(t.rating)}
-                </div>
-                <p className="tcard-text">"{t.text}"</p>
-                <div className="tcard-author">
-                  <div className="tcard-avatar">{t.name.charAt(0)}</div>
-                  <div>
-                    <strong>{t.name}</strong>
-                    <span>{t.role}</span>
-                    <span className="tcard-country">{t.country}</span>
-                  </div>
-                </div>
               </div>
             ))}
           </div>

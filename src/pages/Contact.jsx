@@ -62,9 +62,9 @@ const Contact = ({ onNavigate }) => {
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.2 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>,
       label: 'Phone',
-      value: '+91 2632 359 197',
-      sub: 'Mon–Fri, 9AM–6PM IST',
-      href: 'tel:+912632359197',
+      value: '+91 81411 18006',
+      sub: 'Mon–Fri, 10AM–7PM IST',
+      href: 'tel:+918141118006',
     },
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
@@ -76,22 +76,21 @@ const Contact = ({ onNavigate }) => {
     {
       icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>,
       label: 'Office',
-      value: 'Sai Leela Mall, Abrama',
+      value: '222, 2nd Floor, Sai Leela Mall, Abrama',
       sub: 'Valsad, Gujarat, India',
       href: null,
     },
   ];
 
   const hours = [
-    { day: 'Monday – Friday', time: '9:00 AM – 6:00 PM IST' },
-    { day: 'Saturday', time: '10:00 AM – 4:00 PM IST' },
-    { day: 'Sunday', time: 'By Appointment' },
+    { day: 'Monday – Friday', time: '10:00 AM – 7:00 PM IST' },
+    { day: 'Saturday & Sunday', time: 'By Appointment' },
   ];
 
   const fields = [
-    { name: 'name', label: 'Full Name', type: 'text', placeholder: 'John Doe', required: true },
-    { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com', required: true },
-    { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 98765 43210', required: false },
+    { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Name', required: true },
+    { name: 'email', label: 'Email Address', type: 'email', placeholder: 'atyainno@gmail.com', required: true },
+    { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 81411 18006', required: false },
     { name: 'company', label: 'Company Name', type: 'text', placeholder: 'Your Company', required: false },
     { name: 'subject', label: 'Subject', type: 'text', placeholder: 'Project Discussion', required: true },
   ];
@@ -278,13 +277,15 @@ const Contact = ({ onNavigate }) => {
         <div className="container">
           <div className="contact-why-grid">
             {[
-              { icon: '⚡', title: 'Quick Response', desc: 'We reply to all inquiries within 24 hours' },
-              { icon: '👥', title: 'Expert Team', desc: 'Experienced professionals ready to help' },
-              { icon: '🎯', title: 'Tailored Approach', desc: 'Custom solutions for your specific needs' },
-              { icon: '📊', title: 'Proven Results', desc: '50+ successful projects and counting' },
+              { icon: '/response.png', title: 'Quick Response', desc: 'We reply to all inquiries within 24 hours' },
+              { icon: '/experts.png', title: 'Expert Team', desc: 'Experienced professionals ready to help' },
+              { icon: '/approach.png', title: 'Tailored Approach', desc: 'Custom solutions for your specific needs' },
+              { icon: '/result.png', title: 'Proven Results', desc: '50+ successful projects and counting' },
             ].map((w, i) => (
               <div key={i} className="cw-card">
-                <span className="cw-icon">{w.icon}</span>
+                <span className="cw-icon">
+                  <img src={w.icon} alt={w.title} className="value-img" />
+                </span>
                 <h3>{w.title}</h3>
                 <p>{w.desc}</p>
               </div>

@@ -329,10 +329,11 @@
   opacity: 1;
 }
 
-.odoo-svc-icon {
-  font-size: 2rem;
-  margin-bottom: var(--space-sm);
-  display: block;
+.odoo-svc-img {
+  width: 28px;
+  /* reduce from 40px → 28px */
+  height: 45px;
+  object-fit: contain;
 }
 
 .odoo-svc-card h3 {
@@ -476,6 +477,13 @@
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
+}
+
+.why-odoo-svg {
+  width: 30px;
+  height: 30px;
+  /* makes icons white */
+  opacity: 0.9;
 }
 
 .why-odoo-card::after {
@@ -806,7 +814,7 @@
   .odoo-svc-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
+  
   .odoo-mod-grid {
     grid-template-columns: repeat(4, 1fr);
   }

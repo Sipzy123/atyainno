@@ -17,13 +17,6 @@ const Services = ({ onNavigate }) => {
       color: '#F5C518',
     },
     {
-      icon: '⬟',
-      title: 'Odoo ERP Implementation',
-      desc: 'Authorized partner services for full-cycle ERP deployment, seamless data migration, and high-growth module development.',
-      features: ['ERP Implementation', 'Module Customization', 'Legacy Migration', 'Ongoing Support'],
-      color: '#F5C518',
-    },
-    {
       icon: '✦',
       title: 'Staff Augmentation',
       desc: 'Accelerate your delivery by integrating our senior AI specialists and full-stack developers directly into your team.',

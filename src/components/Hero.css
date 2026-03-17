@@ -156,46 +156,91 @@
   justify-content: center;
 }
 
+/* Ambient glow behind image */
 .hero-glow {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 102, 204, 0.2) 0%, transparent 70%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(245, 194, 32, 0.18) 0%, rgba(0, 102, 204, 0.1) 50%, transparent 70%);
   border-radius: 50%;
-  filter: blur(40px);
+  filter: blur(50px);
   animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.hero-shape {
+/* ── Image wrapper: clips fades, no overflow ── */
+.hero-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 
+ * mix-blend-mode: screen  → black pixels become fully transparent.
+ * The golden glow of the illustration pops against the dark hero bg.
+ * Works perfectly with gradient-dark and looks great on gradient-primary too.
+ */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.9s ease-out 0.3s backwards;
+  /* subtle float animation to keep it lively */
+  animation: fadeInUp 0.9s ease-out 0.3s backwards, heroFloat 7s ease-in-out 1.2s infinite;
+  filter: drop-shadow(0 0 40px rgba(245, 194, 32, 0.25));
+}
+
+/* Soft gradient vignettes so the image melts into the background */
+.hero-img-fade-left {
   position: absolute;
-  border-radius: 20% 60% 70% 30% / 20% 20% 60% 80%;
+  inset: 0;
+  background: linear-gradient(to right, var(--hero-bg-left, #0a0e27) 0%, transparent 30%);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.hero-shape-1 {
-  width: 300px;
-  height: 300px;
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.15), rgba(168, 85, 247, 0.15));
-  top: 50px;
-  right: 50px;
-  animation: float 8s ease-in-out infinite;
+.hero-img-fade-top {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--hero-bg-top, #0a0e27) 0%, transparent 20%);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.hero-shape-2 {
-  width: 250px;
-  height: 250px;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.15));
-  bottom: 100px;
-  left: 100px;
-  animation: float 10s ease-in-out infinite 0.5s;
+.hero-img-fade-bottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--hero-bg-bottom, #0a0e27) 0%, transparent 25%);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.hero-shape-3 {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(135deg, rgba(255, 199, 0, 0.15), rgba(0, 217, 255, 0.15));
-  top: 300px;
-  right: 200px;
-  animation: float 7s ease-in-out infinite 1s;
+/* Per-gradient overrides so fades match the hero background colour */
+.hero.gradient-dark .hero-img-fade-left   { --hero-bg-left:   #0a0e27; }
+.hero.gradient-dark .hero-img-fade-top    { --hero-bg-top:    #0a0e27; }
+.hero.gradient-dark .hero-img-fade-bottom { --hero-bg-bottom: #0a0e27; }
+
+.hero.gradient-primary .hero-img-fade-left   { --hero-bg-left:   #f5f7fa; }
+.hero.gradient-primary .hero-img-fade-top    { --hero-bg-top:    #f5f7fa; }
+.hero.gradient-primary .hero-img-fade-bottom { --hero-bg-bottom: #e8f0ff; }
+/* On light backgrounds use luminosity so darks blend too */
+.hero.gradient-primary .hero-img { mix-blend-mode: multiply; filter: none; }
+
+.hero.gradient-orange .hero-img-fade-left   { --hero-bg-left:   #FFF8E1; }
+.hero.gradient-orange .hero-img-fade-top    { --hero-bg-top:    #FFF8E1; }
+.hero.gradient-orange .hero-img-fade-bottom { --hero-bg-bottom: #ffe8df; }
+.hero.gradient-orange .hero-img { mix-blend-mode: multiply; filter: none; }
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
 }
 
 .scroll-indicator {

@@ -206,34 +206,44 @@
 }
 
 @media (max-width: 1024px) {
-  .nav-phone {
-    display: none;
+
+  /* Hide nav menu, hamburger, phone, CTA — same as mobile */
+  .nav-menu,
+  .hamburger,
+  .nav-overlay,
+  .mobile-nav-extras,
+  .nav-phone,
+  .nav-cta {
+    display: none !important;
   }
 
-  /* Make the main navbar slightly tighter to fit everything */
+  /* Show actions (Odoo badge) */
+  .nav-actions {
+    display: flex !important;
+    margin-left: auto;
+  }
+
   .nav-container {
     gap: 1rem;
   }
 
-  /* Shrink the Odoo badge for tablet screens */
+  /* Properly sized Odoo badge for tablet */
   .nav-odoo-badge {
-    padding: 5px 8px;
-    gap: 6px;
-    margin-right: 4px;
-    /* Less space before the Get a Quote button */
+    padding: 6px 12px;
+    gap: 8px;
+    margin-right: 0;
   }
 
   .nav-odoo-badge-icon img {
-    height: 12px;
-    /* Slightly smaller logo */
+    height: 14px;
   }
 
   .nav-odoo-badge-text strong {
-    font-size: 0.6rem;
+    font-size: 0.72rem;
   }
 
   .nav-odoo-badge-text span {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 }
 

@@ -9,17 +9,17 @@ const ArrowRight = () => (
 
 const AboutUs = ({ onNavigate }) => {
   const values = [
-    { icon: '⚡', title: 'Innovation', desc: 'We embrace cutting-edge technologies and creative thinking to solve complex business challenges.' },
-    { icon: '🤝', title: 'Collaboration', desc: 'We partner closely with clients, treating their goals as our own throughout every project.' },
-    { icon: '🎯', title: 'Excellence', desc: 'Every line of code, every design decision is crafted to exceed expectations.' },
-    { icon: '🔒', title: 'Integrity', desc: 'We operate with full transparency, honesty, and ethical principles in every interaction.' },
+    { icon: '/innovation.png', title: 'Innovation', desc: 'We embrace cutting-edge technologies and creative thinking to solve complex business challenges.' },
+    { icon: '/colaboration.png', title: 'Collaboration', desc: 'We partner closely with clients, treating their goals as our own throughout every project.' },
+    { icon: '/excellence.png', title: 'Excellence', desc: 'Every line of code, every design decision is crafted to exceed expectations.' },
+    { icon: '/integrity.png', title: 'Integrity', desc: 'We operate with full transparency, honesty, and ethical principles in every interaction.' },
   ];
 
   const team = [
-    { icon: '💻', title: 'Expert Developers', desc: 'Full-stack developers proficient in latest and emerging technologies' },
-    { icon: '🎨', title: 'Creative Designers', desc: 'UI/UX designers creating beautiful, intuitive interfaces' },
-    { icon: '📊', title: 'Project Managers', desc: 'Experienced managers ensuring on-time, on-budget delivery' },
-    { icon: '🎯', title: 'Business Consultants', desc: 'Strategic consultants helping optimize your technology investment' },
+    { icon: '/developer.png', title: 'Expert Developers', desc: 'Full-stack developers proficient in latest and emerging technologies' },
+    { icon: '/creative.png', title: 'Creative Designers', desc: 'UI/UX designers creating beautiful, intuitive interfaces' },
+    { icon: '/manager.png', title: 'Project Managers', desc: 'Experienced managers ensuring on-time, on-budget delivery' },
+    { icon: '/consultant.png', title: 'Business Consultants', desc: 'Strategic consultants helping optimize your technology investment' },
   ];
 
   const reasons = [
@@ -73,7 +73,7 @@ const AboutUs = ({ onNavigate }) => {
               {[
                 { n: '50+', l: 'Projects' },
                 { n: '30+', l: 'Clients' },
-                { n: '10+', l: 'Years' },
+                { n: '15+', l: 'Years' },
                 { n: '25+', l: 'Team' },
               ].map(s => (
                 <div key={s.l} className="story-stat">
@@ -96,7 +96,9 @@ const AboutUs = ({ onNavigate }) => {
           <div className="values-grid">
             {values.map((v, i) => (
               <div key={i} className="value-card">
-                <span className="value-icon">{v.icon}</span>
+                <span className="value-icon">
+                  <img src={v.icon} alt={v.title} className="value-img" />
+                </span>
                 <h3>{v.title}</h3>
                 <p>{v.desc}</p>
               </div>
@@ -118,7 +120,9 @@ const AboutUs = ({ onNavigate }) => {
           <div className="team-grid">
             {team.map((t, i) => (
               <div key={i} className="team-card">
-                <span className="team-icon">{t.icon}</span>
+                <span className="team-icon">
+                  <img src={t.icon} alt={t.title} className="team-img" />
+                </span>
                 <h3>{t.title}</h3>
                 <p>{t.desc}</p>
               </div>
