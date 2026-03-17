@@ -28,7 +28,7 @@ const Footer = ({ onNavigate }) => {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <img src="logo.png" className="footer-logo" />
+            <img src="logo.png" alt="Atya Inno Logo" className="footer-logo" />
             <p className="footer-tagline">
               An India-based IT company bringing innovative tech solutions to transform your business.
             </p>
