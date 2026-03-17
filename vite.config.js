@@ -7,5 +7,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'EVAL') return;
+        warn(warning);
+      }
+    }
   },
+
 });

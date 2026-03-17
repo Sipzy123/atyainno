@@ -1,7 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Home.css';
 import BentoSection from '../components/BentoSection';
+import robotAnimation from "../assets/robot-hello.json";
+import { lazy, Suspense } from "react";
 
+const Lottie = lazy(() => import("lottie-react"));
 /* ── tiny inline helpers ── */
 const ArrowRight = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -220,11 +223,14 @@ const Home = ({ onNavigate }) => {
 
           <div className="hero-visual fade-up fade-up-delay-2">
             <div className="hero-image-wrap">
-              <img
-                src="/hero2.png"
-                alt="atyainno digital solutions"
-                className="hero-img"
-              />
+              <Suspense fallback={null}>
+                <Lottie
+                  animationData={robotAnimation}
+                  loop={true}
+                  autoplay={true}
+                  className="hero-img"
+                />
+              </Suspense>
             </div>
           </div>
         </div>

@@ -165,13 +165,12 @@ const DonutChart = () => {
   return (
     <div className="bento-donut" ref={ref}>
       <div className="donut-header-row">
-        <span className="bento-tag">Project Mix</span>
+        <span className="bento-tag">Projects</span>
         <div className="donut-big-stat">
-          <strong>22%</strong>
           <span>▲ 12% monthly</span>
         </div>
       </div>
-      <p className="donut-sub-text">16,843 projects delivered</p>
+      <p className="donut-sub-text">50+ projects delivered</p>
 
       <div className="donut-main-body">
         <svg width="200" height="200" viewBox="0 0 200 200" style={{ overflow: 'visible', flexShrink: 0 }}>

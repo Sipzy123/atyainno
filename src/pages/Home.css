@@ -179,15 +179,16 @@
 
 .hero-img {
   width: 100%;
-  max-width: 720px;
+  max-width: 500px;
   height: auto;
-  object-fit: contain;
+
+  /* IMPORTANT */
+  display: block;
+
+  /* Remove this if colors look weird */
   mix-blend-mode: screen;
-  position: relative;
-  z-index: 2;
+
   animation: float 7s ease-in-out infinite;
-  filter:
-    brightness(0.8) contrast(1.0) saturate(1.0);
 }
 
 /* ── Vignette fades — exactly match hero background #0D0D0D ── */
@@ -927,7 +928,7 @@
   }
 
   .hero-img {
-    max-width: 520px;
+    max-width: 300px;
   }
 
   .odoo-spot-inner {
@@ -967,7 +968,7 @@
   }
 
   .hero-img {
-    max-width: 360px;
+    max-width: 230px;
   }
 
   .odoo-modules-grid {
